@@ -25,8 +25,6 @@
 
 <style>
   .container {
-    position:sticky;
-    top: var(--b);
     background-color: var(--glass-foreground-color);
     border-radius: var(--c);
     overflow: hidden;
