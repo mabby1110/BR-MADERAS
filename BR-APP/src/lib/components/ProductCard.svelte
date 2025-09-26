@@ -7,7 +7,7 @@
   }
 </script>
 
-<div class="container">
+<div class="container glass-by-mabby">
   <div class="img-container">img</div>
   <h2 class="title">titulo del producto</h2>
   {#if expanded}
@@ -25,7 +25,6 @@
 
 <style>
   .container {
-    background-color: var(--glass-foreground-color);
     border-radius: var(--c);
     overflow: hidden;
     height: 60vh;
@@ -34,7 +33,6 @@
   }
   .img-container {
     background-color: var(--glass-primary-color);
-    backdrop-filter: blur(8px);
     min-height: 60%;
     height: 100%;
     display: flex;

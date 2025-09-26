@@ -7,10 +7,9 @@
 <style>
   .container {
     position: fixed;
-    z-index: 9999;
-    right: var(--a);
-    bottom: var(--a);
-    top: 40%;
+    z-index: 999;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column-reverse;
     padding: var(--padding-a);

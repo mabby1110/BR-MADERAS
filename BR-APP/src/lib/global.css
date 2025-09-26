@@ -1,9 +1,9 @@
 /* Estilos globales para la aplicación */
 :root {
     /* Colores base */
-    --background-color: #d2d2d2;
+    --background-color: #ffffff;
     --foreground-color: #fff;
-    --glass-foreground-color: #fbfbfb60;
+    --glass-color: #fbfbfb60;
     --primary-color: #05078F;
     --secondary-color: #000000;
     --accent-color: #00AC48;
@@ -62,5 +62,12 @@ html {
     background-color: var(--background-color);
 }
 body {
-    background-color: var(--background-color);
+    background-color: transparent;
+    position: relative;
+    height: 100vh;
+}
+
+.glass-by-mabby {
+    background-color: var(--glass-color);
+    backdrop-filter: blur(16px);
 }
