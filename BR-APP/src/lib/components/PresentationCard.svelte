@@ -15,18 +15,18 @@
 <style>
   .container {
     align-self: center;
-    margin-top: 50vh;
+    justify-self: center;
     padding: 1rem;
     max-width: 600px;
     width: 100%;
     border-radius: 16px;
     display: flex;
     align-items: center;
+    text-align: center;
     flex-direction: column;
     gap: 1rem;
-    position: sticky;
-    top: 1rem;
-    z-index: 99;
+    white-space: pre;
+    height: 8rem;
   }
 
   .links {

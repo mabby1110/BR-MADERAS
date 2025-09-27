@@ -14,8 +14,8 @@
 <style>
   .page-container {
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
     background-color: transparent;
   }

@@ -1,13 +1,13 @@
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
 
-// Una store simple que almacena un número
-export const ticket = writable([
+const products = [
   {
     id: 1,
+    img_list: ["caoba_eltza.jpg"],
     material: "MDF Melamina",
-    title: "Tablón MDF Roble Claro",
+    title: "Tablón MDF Caoba Eltza",
     description:
-      "Tablón de MDF con recubrimiento de melamina. Acabado Roble Claro. Ideal para muebles de interior.",
+      "Tablón de MDF con recubrimiento de melamina. Acabado Caoba. Ideal para muebles de interior.",
     details: {
       espesorMM: 18,
       dimensionesCM: "244 x 122",
@@ -15,19 +15,105 @@ export const ticket = writable([
   },
   {
     id: 2,
+    img_list: ["caoba.jpg"],
     material: "MDF Melamina",
-    title: "Tablón MDF Blanco Brillante",
+    title: "Tablón MDF Caoba",
     description:
-      "Tablón de MDF con melamina. Acabado Blanco de alto brillo. Superficie resistente a rayones.",
+      "Tablón de MDF con recubrimiento de melamina. Acabado Caoba. Ideal para muebles de interior.",
     details: {
-      espesorMM: 15,
-      dimensionesCM: "280 x 130",
+      espesorMM: 18,
+      dimensionesCM: "244 x 122",
     },
   },
-]);
-// -----------------------------------------------------------
-// FUNCIONES DE MANIPULACIÓN
-// -----------------------------------------------------------
+  {
+    id: 3,
+    img_list: ["fresno_siza.jpg"],
+    material: "MDF Melamina",
+    title: "Tablón MDF Fresno Siza",
+    description:
+      "Tablón de MDF con recubrimiento de melamina. Acabado Fresno. Ideal para muebles de interior.",
+    details: {
+      espesorMM: 18,
+      dimensionesCM: "244 x 122",
+    },
+  },
+  {
+    id: 4,
+    img_list: ["gris_oxford.jpg"],
+    material: "MDF Melamina",
+    title: "Tablón MDF Gris Oxford",
+    description:
+      "Tablón de MDF con recubrimiento de melamina. Acabado Gris Oxford. Ideal para muebles de interior.",
+    details: {
+      espesorMM: 18,
+      dimensionesCM: "244 x 122",
+    },
+  },
+  {
+    id: 5,
+    img_list: ["marmol.jpg"],
+    material: "MDF Melamina",
+    title: "Tablón MDF Mármol",
+    description:
+      "Tablón de MDF con recubrimiento de melamina. Acabado tipo Mármol. Ideal para cubiertas y muebles de interior.",
+    details: {
+      espesorMM: 18,
+      dimensionesCM: "244 x 122",
+    },
+  },
+  {
+    id: 6,
+    img_list: ["negro.jpg"],
+    material: "MDF Melamina",
+    title: "Tablón MDF Negro",
+    description:
+      "Tablón de MDF con recubrimiento de melamina. Acabado color Negro. Ideal para muebles de interior.",
+    details: {
+      espesorMM: 18,
+      dimensionesCM: "244 x 122",
+    },
+  },
+  {
+    id: 7,
+    img_list: ["nogal_calido.jpg"],
+    material: "MDF Melamina",
+    title: "Tablón MDF Nogal Cálido",
+    description:
+      "Tablón de MDF con recubrimiento de melamina. Acabado Nogal. Ideal para muebles de interior.",
+    details: {
+      espesorMM: 18,
+      dimensionesCM: "244 x 122",
+    },
+  },
+  {
+    id: 8,
+    img_list: ["parota.jpg"],
+    material: "MDF Melamina",
+    title: "Tablón MDF Parota",
+    description:
+      "Tablón de MDF con recubrimiento de melamina. Acabado Parota. Ideal para muebles de interior.",
+    details: {
+      espesorMM: 18,
+      dimensionesCM: "244 x 122",
+    },
+  },
+  {
+    id: 9,
+    img_list: ["roble_arca.jpg"],
+    material: "MDF Melamina",
+    title: "Tablón MDF Roble Arca",
+    description:
+      "Tablón de MDF con recubrimiento de melamina. Acabado Roble. Ideal para muebles de interior.",
+    details: {
+      espesorMM: 18,
+      dimensionesCM: "244 x 122",
+    },
+  },
+];
+
+export const productList = writable(products);
+
+export const ticket = writable([]);
 
 /**
  * 1. Agrega un nuevo artículo al array de la store `ticket` solo si no existe.
@@ -51,8 +137,6 @@ export function addUniqueToTicket(item) {
   });
 }
 
-// -----------------------------------------------------------
-
 /**
  * 2. Elimina un artículo del array de la store `ticket`.
  * @param {number} id El ID del artículo a eliminar.
@@ -65,50 +149,20 @@ export function removeFromTicket(id) {
   });
 }
 
-const products = [
-  {
-    id: 1,
-    material: "MDF Melamina",
-    title: "Tablón MDF Roble Claro",
-    description:
-      "Tablón de MDF con recubrimiento de melamina. Acabado Roble Claro. Ideal para muebles de interior.",
-    details: {
-      espesorMM: 18,
-      dimensionesCM: "244 x 122",
-    },
-  },
-  {
-    id: 2,
-    material: "MDF Melamina",
-    title: "Tablón MDF Blanco Brillante",
-    description:
-      "Tablón de MDF con melamina. Acabado Blanco de alto brillo. Superficie resistente a rayones.",
-    details: {
-      espesorMM: 15,
-      dimensionesCM: "280 x 130",
-    },
-  },
-  {
-    id: 3,
-    material: "MDF Melamina",
-    title: "Tablón MDF Wengué",
-    description:
-      "Tablón con melamina color Wengué. Textura mate. Usado frecuentemente en cocinas y escritorios.",
-    details: {
-      espesorMM: 18,
-      dimensionesCM: "244 x 122",
-    },
-  },
-  {
-    id: 4,
-    material: "MDF Melamina",
-    title: "Tablón MDF Gris Cemento",
-    description: "Diseño industrial Gris Cemento. Melamina de baja porosidad.",
-    details: {
-      espesorMM: 12,
-      dimensionesCM: "280 x 130",
-    },
-  },
-];
+/**
+ * 3. Verifica si un artículo ya existe en el array de la store `ticket`.
+ * La existencia se comprueba por la combinación de `id` y `material`.
+ * @param {Object} item El objeto a verificar (debe tener 'id' y 'material').
+ * @returns {boolean} True si el artículo ya está en el ticket, false en caso contrario.
+ */
+export function isProductInTicket(item) {
+  // Usamos 'get' para obtener el valor actual de la store sin necesidad de suscribirse/desuscribirse manualmente.
+  const currentTicket = get(ticket);
 
-export const productList = writable(products);
+  // Busca si ya existe un elemento con el mismo id Y material.
+  const exists = currentTicket.some(
+    (t) => t.id === item.id && t.material === item.material
+  );
+
+  return exists;
+}

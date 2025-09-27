@@ -53,6 +53,12 @@
   --button-text: white;
 }
 
+  h1, h2, h3 {
+    font-weight: 300;
+  }
+  h1 {
+    font-size: 4vh;
+  }
 * {
   box-sizing: border-box;
   font-family: var(--font-family);

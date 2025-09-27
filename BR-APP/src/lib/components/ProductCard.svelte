@@ -1,19 +1,42 @@
 <script lang="ts">
-  import { addUniqueToTicket } from "$lib/stores";
+  import {
+    addUniqueToTicket,
+    isProductInTicket,
+    removeFromTicket,
+  } from "$lib/stores";
+  import { preventDefault } from "svelte/legacy";
   import { slide } from "svelte/transition";
   let { product } = $props();
 
   let expanded = $state(false);
-  function toggleDetails() {
+  let selected = $state(false);
+  function toggleDetails(e) {
+    e.preventDefault();
+    e.stopPropagation();
     expanded = !expanded;
   }
   function handleClick() {
-    addUniqueToTicket(product);
+    console.log('selected', isProductInTicket(product));
+    if (isProductInTicket(product)) {
+      removeFromTicket(product.id);
+      selected = false;
+    } else {
+      addUniqueToTicket(product);
+      selected = true;
+    }
   }
 </script>
 
-<button class="container glass-by-mabby" onclick={handleClick}>
-  <div class="img-container">img</div>
+<button
+  class="container glass-by-mabby  {selected ? 'selected' : ''}"
+  onclick={handleClick}
+>
+  <div class="img-container">
+    <img
+      src="src/lib/assets/products_media/{product.img_list[0]}"
+      alt={product.img_list[0]}
+    />
+  </div>
   <h2 class="title">{product.title}</h2>
   {#if expanded}
     <div class="product-details">
@@ -39,10 +62,12 @@
     position: relative;
     border-radius: var(--c);
     overflow: hidden;
-    height: 60vh;
+    height: 50vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 5fr 1fr 2fr;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
   .img-container {
     background-color: var(--glass-primary-color);
@@ -51,6 +76,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
   }
   .product-details {
     display: flex;
@@ -64,7 +94,8 @@
 
   .description,
   .meta {
-    padding-left: var(--c);
+    padding: 0 var(--b);
+    text-align: start;
   }
   .description {
     flex-grow: 1;
@@ -76,5 +107,8 @@
     justify-content: center;
     position: absolute;
     bottom: 1rem;
+  }
+  .selected {
+    border: 1px solid rgb(0, 0, 0);
   }
 </style>

@@ -15,7 +15,9 @@
 </div>
 <AppActions />
 <div class="layout-content">
-  <PresentationCard />
+  <nav>
+    <PresentationCard />
+  </nav>
   {@render children?.()}
   <footer class="ticket" id="ticket">
     <TicketForm />
@@ -28,12 +30,20 @@
     flex-direction: column;
     background-color: transparent;
   }
+  nav {
+    position: sticky;
+    margin-top: 50vh;
+    top: 1rem;
+    z-index: 99;
+    padding: 0 8px;
+  }
   footer {
     z-index: 99;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    padding: 0 8px 2rem;
   }
   .bg-img {
     position: fixed;

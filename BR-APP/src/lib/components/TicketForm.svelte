@@ -22,11 +22,8 @@
       {#each $ticket as product}
         <TicketCard {product} />
       {/each}
-      {#each $ticket as product}
-        <TicketCard {product} />
-      {/each}
     </div>
-    <button type="submit"> Generar Cotización </button>
+    <button type="submit" class="submit-button"> Generar Cotización </button>
   </form>
 </div>
 
@@ -34,6 +31,9 @@
   h2 {
     margin-bottom: 1rem;
     text-align: center;
+  }
+  form {
+    padding: 1rem;
   }
   .contact-form {
     position: sticky;
@@ -43,7 +43,7 @@
     max-width: 600px;
     width: 100%;
     align-self: center;
-    padding: 1rem;
+    padding: 1rem 0;
   }
   .contact-form form {
     display: grid;
@@ -57,6 +57,8 @@
     gap: 1rem;
     max-height: 50vh;
     overflow-y: scroll;
+    padding-bottom: 4rem;
+    width: 100%;
   }
   .form-group {
     display: flex;
@@ -75,7 +77,7 @@
     border-radius: 4px;
   }
 
-  button {
+  .submit-button {
     all: unset;
     padding: 1rem;
     border-radius: 16px;
@@ -83,8 +85,12 @@
     text-align: center;
     justify-self: center;
     background-color: var(--glass-primary-color);
+    backdrop-filter: blur(16px);
+    position: absolute;
+    bottom: 1rem;
+    z-index: 99;
   }
-  button:disabled {
+  .submit-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
   }
