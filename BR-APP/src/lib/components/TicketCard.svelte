@@ -39,10 +39,10 @@
     grid-row: 1 / 5;
   }
   .product-title {
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
     grid-row: 1 / 2;
     z-index: 1;
-    padding: 1rem;
+    padding: 1rem 0;
   }
   .product-img img {
     width: 30%;

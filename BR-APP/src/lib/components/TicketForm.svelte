@@ -55,7 +55,7 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     grid-auto-rows: 10rem;
     gap: 1rem;
-    height: 50vh;
+    max-height: 50vh;
     overflow-y: scroll;
   }
   .form-group {
