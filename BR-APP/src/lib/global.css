@@ -4,9 +4,11 @@
     --background-color: #ffffff;
     --foreground-color: #fff;
     --glass-color: #fbfbfb60;
+    --accent-glass-color: #2bff0060;
     --primary-color: #05078F;
     --secondary-color: #000000;
     --accent-color: #00AC48;
+    --success-color: #00AC48;
     --glass-primary-color: #00AC4860;
     --glass-secondary-color: #01512260;
     --glass-accent-color: #00AC4860;
@@ -70,4 +72,6 @@ body {
 .glass-by-mabby {
     background-color: var(--glass-color);
     backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-color);
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
 }
