@@ -1,77 +1,78 @@
 /* Estilos globales para la aplicación */
 :root {
-    /* Colores base */
-    --background-color: #ffffff;
-    --foreground-color: #fff;
-    --glass-color: #fbfbfb60;
-    --accent-glass-color: #2bff0060;
-    --primary-color: #05078F;
-    --secondary-color: #000000;
-    --accent-color: #00AC48;
-    --success-color: #00AC48;
-    --glass-primary-color: #00AC4860;
-    --glass-secondary-color: #01512260;
-    --glass-accent-color: #00AC4860;
+  /* Colores base */
+  --background-color: #ffffff;
+  --foreground-color: #fff;
+  --glass-color: #fbfbfb60;
+  --accent-glass-color: #2bff0060;
+  --primary-color: #05078f;
+  --secondary-color: #000000;
+  --accent-color: #00ac48;
+  --success-color: #00ac48;
+  --glass-primary-color: #00ac4860;
+  --glass-secondary-color: #01512260;
+  --glass-accent-color: #00ac4860;
 
-    /* Colores UI */
-    --panel-bg: #dbdbdb;
-    --panel-hover-bg: #eaeaea;
-    --border-color: #05078F15;
-    --input-bg: #ffffff;
-    --input-border: #cccccc;
-    --input-focus-border: #007a87;
+  /* Colores UI */
+  --panel-bg: #dbdbdb;
+  --panel-hover-bg: #eaeaea;
+  --border-color: #05078f15;
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --input-focus-border: #007a87;
 
-    /* Tipografía */
-    --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --font-size-base: 16px;
-    --font-size-sm: 14px;
-    --font-size-lg: 20px;
-    --text-color: #222222;
-    --text-muted: #717171;
+  /* Tipografía */
+  --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 20px;
+  --text-color: #222222;
+  --text-muted: #717171;
 
-    /* Espaciados */
-    --a: 8px;
-    --b: 1rem;
-    --c: 2rem;
+  /* Espaciados */
+  --a: 8px;
+  --b: 1rem;
+  --c: 2rem;
 
-    /* Bordes */
-    --br-a: 8px;
-    --br-b: 16px;
-    --br-c: 32px;
+  /* Bordes */
+  --br-a: 8px;
+  --br-b: 16px;
+  --br-c: 32px;
 
-    /* Sombra */
-    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* Sombra */
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
-    --height-a: 2.6rem;
-    --height-b: 340px;
-    --height-c: 400px;
-    --width-a: 180px;
-    --width-b: 240px;
+  --height-a: 2.6rem;
+  --height-b: 340px;
+  --height-c: 400px;
+  --width-a: 180px;
+  --width-b: 240px;
 
-    --button-background: var(--primary-color);
-    --button-hover-background: var(--secondary-color);
-    --button-text: white;
+  --button-background: var(--primary-color);
+  --button-hover-background: var(--secondary-color);
+  --button-text: white;
 }
 
 * {
-    box-sizing: border-box;
-    font-family: var(--font-family);
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    background-color: var(--background-color);
+  background-color: var(--background-color);
+  scroll-behavior: smooth;
 }
 body {
-    background-color: transparent;
-    position: relative;
-    height: 100vh;
+  background-color: transparent;
+  position: relative;
+  height: 100vh;
 }
 
 .glass-by-mabby {
-    background-color: var(--glass-color);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-color);
-            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--glass-color);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-color);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
 }

@@ -1,14 +1,9 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { removeFromTicket } from "$lib/stores";
 
-  export let producto; // El objeto del producto (id, nombre, precioUnitario, stock, descripcion)
-  export let itemCotizacion; // El objeto reactivo de la cotización para este producto (id, cantidad, observaciones)
-
-  const dispatch = createEventDispatcher();
-
-  // Función para forzar la reactividad en el array `cotizacion` de la página padre
-  function actualizarCotizacion() {
-    dispatch('actualizar', itemCotizacion);
+  let { product } = $props();
+  function removeItemFromTicket() {
+    removeFromTicket(product.id);
   }
 </script>
 
@@ -17,32 +12,17 @@
     <img src="src/lib/assets/caoba.jpg" alt="" />
   </div>
   <h3 class="product-title">
-    {producto.nombre}
+    {product.title}
   </h3>
   <div class="product-detail">
     <div class="form-group">
-      <label for="cantidad-{producto.id}">Cantidad Requerida:</label>
-      <input
-        type="number"
-        id="cantidad-{producto.id}"
-        min="0"
-        max={producto.stock}
-        bind:value={itemCotizacion.cantidad}
-        on:change={actualizarCotizacion}
-        required
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="obs-{producto.id}">Observaciones:</label>
       <textarea
-        id="obs-{producto.id}"
-        bind:value={itemCotizacion.observaciones}
-        on:change={actualizarCotizacion}
-        placeholder="Notas o requerimientos especiales para este producto."
+      id="obs-{product.id}"
+      placeholder="Notas o requerimientos especiales para este producto."
       ></textarea>
     </div>
   </div>
+  <button class="close-button" onclick={removeItemFromTicket}>x</button>
 </div>
 
 <style>
@@ -77,18 +57,29 @@
   }
   .form-group {
     display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: hidden;
   }
-  .form-group label {
-    width: 100%;
-  }
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="number"],
+
   .form-group textarea {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+    width: 90%;
+    padding: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 16px;
+    resize: none;
+  }
+  .close-button {
+    all: unset;
+    position: absolute;
+    right: 0.6rem;
+    top: 0.2rem;
+    z-index: 99;
+    padding: 1rem;
+    color: black;
+    font-weight: bold;
+  }
+  .close-button:hover {
+    color: black;
   }
 </style>

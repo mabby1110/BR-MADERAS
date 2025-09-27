@@ -2,7 +2,7 @@
   import favicon from "$lib/assets/favicon.svg";
   import AppActions from "../lib/components/AppActions.svelte";
   import "$lib/global.css";
-  import ContactForm from "$lib/components/ContactForm.svelte";
+  import TicketForm from "$lib/components/TicketForm.svelte";
   import PresentationCard from "$lib/components/PresentationCard.svelte";
   let { children } = $props();
 </script>
@@ -15,53 +15,25 @@
 </div>
 <AppActions />
 <div class="layout-content">
-  <PresentationCard/>
+  <PresentationCard />
   {@render children?.()}
-  <footer>
-    <div class="ticket">
-      <ContactForm />
-    </div>
+  <footer class="ticket" id="ticket">
+    <TicketForm />
   </footer>
 </div>
 
 <style>
   .layout-content {
-    position: relative;
     display: flex;
     flex-direction: column;
     background-color: transparent;
-  }
-  nav {
-    z-index: 99;
-    background-color: transparent;
-    position: fixed;
-    padding-top: 6rem;
-    top: 1rem;
-    left: 1rem;
-    border-radius: 32px;
-    display: flex;
-    overflow: hidden;
-  }
-  .nav-logo {
-    object-fit: contain;
-    height: 8rem;
-  }
-  .nav-logo img {
-    height: 100%;
-    width: 100%;
   }
   footer {
     z-index: 99;
-    height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-  }
-  .ticket {
-    overflow: hidden;
-    width: 100%;
-    margin-bottom: 2rem;
-    padding-top: 10rem;
+    height: 100vh;
   }
   .bg-img {
     position: fixed;

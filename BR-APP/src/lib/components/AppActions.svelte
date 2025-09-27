@@ -1,10 +1,10 @@
 <div class="container">
-  <button class="cart">
-    <img src="src/lib/assets/mdi-light--cart.svg" alt="cart-icon" />
-  </button>
-  <button class="cart">
+  <a class="cart" href="#start">
     <img src="src/lib/assets/line-md--file-search.svg" alt="cart-icon" />
-  </button>
+  </a>
+  <a class="cart" href="#ticket">
+    <img src="src/lib/assets/mdi-light--cart.svg" alt="cart-icon" />
+  </a>
 </div>
 
 <style>
@@ -19,7 +19,6 @@
     gap: 1rem;
   }
   .cart {
-    all: unset;
     background-color: var(--glass-primary-color);
     border-radius: var(--br-a);
     backdrop-filter: blur(16px);
