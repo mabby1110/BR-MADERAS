@@ -53,7 +53,6 @@
   footer {
     z-index: 99;
     height: 100vh;
-    padding-top: 7rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -62,6 +61,7 @@
     overflow: hidden;
     width: 100%;
     margin-bottom: 2rem;
+    padding-top: 10rem;
   }
   .bg-img {
     position: fixed;
