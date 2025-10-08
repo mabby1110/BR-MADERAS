@@ -31,6 +31,7 @@
     display: flex;
     flex-direction: column;
     background-color: transparent;
+    position: relative;
   }
   nav {
     position: sticky;
@@ -45,6 +46,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    margin-bottom: 4rem;
     padding: 0 8px 2rem;
     position: sticky;
     top: 9rem;

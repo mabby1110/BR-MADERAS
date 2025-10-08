@@ -1,14 +1,27 @@
+<script>
+  const socialLinks = {
+    email: "mailto:axel.barbarba@email.com",
+    instagram: "https://instagram.com/axelbaautista",
+    whatsapp: "https://wa.me/3333016202",
+    phone: "tel:3333016202",
+  };
+</script>
+
 <div class="container glass-by-mabby">
   <h1>Axel E. Barba Bautista</h1>
   <div class="links">
-    <div class="link">
-        <img src="/src/lib/assets/instagram.png" alt="instagram"></div>
-    <div class="link">
-        <img src="/src/lib/assets/whatsapp.png" alt="whatsapp"></div>
-    <div class="link">
-        <img src="/src/lib/assets/email.svg" alt="Correo"></div>
-    <div class="link">
-        <img src="/src/lib/assets/phone.svg" alt="Telefono"></div>
+    <a href={socialLinks.instagram} class="link">
+      <img src="/src/lib/assets/instagram.png" alt="instagram" />
+    </a>
+    <a href={socialLinks.whatsapp} class="link">
+      <img src="/src/lib/assets/whatsapp.png" alt="whatsapp" />
+    </a>
+    <a href={socialLinks.email} class="link">
+      <img src="/src/lib/assets/email.svg" alt="Correo" />
+    </a>
+    <a href={socialLinks.phone} class="link">
+      <img src="/src/lib/assets/phone.svg" alt="Telefono" />
+    </a>
   </div>
 </div>
 

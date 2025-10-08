@@ -6,7 +6,7 @@ Este es el repositorio del sistema de **E-commerce** diseñado y desarrollado pa
 
 ## 🏗️ Arquitectura y Desarrollo
 
-* **Diseño, Arquitectura y Creación:** El software fue concebido, diseñado y desarrollado por **Bernardo A. Márquez** (Alias: **CURRENT.ME**), consultor y desarrollador de software.
+* **Diseño, Arquitectura y Creación:** El software fue concebido, diseñado y desarrollado por **Bernardo A. Márquez**, consultor y desarrollador de software.
 * **Propiedad Intelectual:** El código fuente y la arquitectura son propiedad de **rznns.mabby@gmail.com**.
 * **Encargado del Proyecto (BR MADERAS):** Axel Barba.
 
