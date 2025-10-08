@@ -4,6 +4,7 @@
   import "$lib/global.css";
   import TicketForm from "$lib/components/TicketForm.svelte";
   import PresentationCard from "$lib/components/PresentationCard.svelte";
+  import Footer from "$lib/components/Footer.svelte";
   let { children } = $props();
 </script>
 
@@ -19,9 +20,10 @@
     <PresentationCard />
   </nav>
   {@render children?.()}
-  <footer class="ticket" id="ticket">
+  <div class="ticket" id="ticket">
     <TicketForm />
-  </footer>
+  </div>
+  <Footer/>
 </div>
 
 <style>
@@ -37,13 +39,15 @@
     z-index: 99;
     padding: 0 8px;
   }
-  footer {
+  .ticket {
     z-index: 99;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100vh;
     padding: 0 8px 2rem;
+    position: sticky;
+    top: 9rem;
   }
   .bg-img {
     position: fixed;
