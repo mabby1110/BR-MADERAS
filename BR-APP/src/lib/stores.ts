@@ -3,6 +3,7 @@ import { get, writable } from "svelte/store";
 const products = [
   {
     id: 1,
+    obs: "",
     img_list: ["caoba_eltza.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Caoba Eltza",
@@ -15,6 +16,7 @@ const products = [
   },
   {
     id: 2,
+    obs: "",
     img_list: ["caoba.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Caoba",
@@ -27,6 +29,7 @@ const products = [
   },
   {
     id: 3,
+    obs: "",
     img_list: ["fresno_siza.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Fresno Siza",
@@ -39,6 +42,7 @@ const products = [
   },
   {
     id: 4,
+    obs: "",
     img_list: ["gris_oxford.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Gris Oxford",
@@ -51,6 +55,7 @@ const products = [
   },
   {
     id: 5,
+    obs: "",
     img_list: ["marmol.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Mármol",
@@ -63,6 +68,7 @@ const products = [
   },
   {
     id: 6,
+    obs: "",
     img_list: ["negro.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Negro",
@@ -75,6 +81,7 @@ const products = [
   },
   {
     id: 7,
+    obs: "",
     img_list: ["nogal_calido.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Nogal Cálido",
@@ -87,6 +94,7 @@ const products = [
   },
   {
     id: 8,
+    obs: "",
     img_list: ["parota.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Parota",
@@ -99,6 +107,7 @@ const products = [
   },
   {
     id: 9,
+    obs: "",
     img_list: ["roble_arca.jpg"],
     material: "MDF Melamina",
     title: "Tablón MDF Roble Arca",

@@ -4,45 +4,30 @@
   import TicketCard from "./TicketCard.svelte";
   import { ticket } from "$lib/stores";
 
-  // 1. Tipado del store (asumiendo una estructura mínima)
   interface Producto {
     id: string;
     nombre: string;
     cantidad: number;
-    [key: string]: any; // Permite otras propiedades en los productos
+    [key: string]: any;
   }
 
-  /**
-   * Función para manejar el envío con SvelteKit enhance.
-   * @param {SubmitFunction}
-   */
-  const handleSubmit: SubmitFunction = ({ action, data, form, submitter }) => {
-    // 2. Serializar el contenido del store '$ticket' a JSON
-    const ticketData: Producto[] = $ticket;
-    const productosJson: string = JSON.stringify(ticketData);
+  $: isTicketEmpty = $ticket.length === 0;
 
-    // 3. Agregar el JSON al objeto FormData antes de enviarlo
-    // El nombre del campo será 'productos'
-    data.set("productos", productosJson);
+  $: ticketData = JSON.stringify($ticket);
 
-    // Opcional: Mostrar los datos antes de enviar
-    console.log(
-      "Datos del Cliente:",
-      data.get("nombreCliente"),
-      data.get("emailCliente")
-    );
-    console.log("Productos JSON a enviar:", data.get("productos"));
+  const handleSubmit: SubmitFunction = ({ form }) => {
+    alert("click?");
+    const formData = new FormData(form);
 
-    // Retornar true permite que SvelteKit continúe con el envío
-    return ({ update }) => {
-      // Lógica de feedback aquí (ej: limpiar formulario, mostrar éxito)
-      update();
+    return async ({ update }) => {
+      await update({ reset: false, invalidateAll: true });
     };
   };
 </script>
 
 <div class="contact-form glass-by-mabby">
-  <form method="POST" action="?/cotizacion" use:enhance={handleSubmit}>
+  <form method="POST" action="/api" use:enhance={handleSubmit}>
+    <input type="text" name="ticketData" id="ticket-data" hidden bind:value={ticketData}>
     <div class="contact-data">
       <h2 class="form-title">Solicitar Cotización</h2>
 
@@ -54,6 +39,16 @@
         <label for="emailCliente">Email de Contacto:</label>
         <input type="email" id="emailCliente" name="emailCliente" required />
       </div>
+      <!-- Nuevo campo de teléfono -->
+      <div class="form-group">
+        <label for="telefonoCliente">Teléfono:</label>
+        <input
+          type="tel"
+          id="telefonoCliente"
+          name="telefonoCliente"
+          required
+        />
+      </div>
     </div>
 
     <div class="cart-items">
@@ -61,17 +56,20 @@
         {#each $ticket as product}
           <TicketCard {product} />
         {/each}
-    {:else}
-    <p>Agrega el producto que te interece seleccionando</p>
+      {:else}
+        <p class="empty-message">
+          Agrega el producto que te interese seleccionando en la lista.
+        </p>
       {/if}
     </div>
 
-    <button type="submit" class="submit-button"> Generar Cotización </button>
+    <button type="submit" class="submit-button" disabled={isTicketEmpty}>
+      Generar Cotización
+    </button>
   </form>
 </div>
 
 <style>
-  /* Estilos copiados exactamente del componente original */
   h2 {
     margin-bottom: 1rem;
     text-align: center;
@@ -95,6 +93,9 @@
     grid-template-rows: repeat(auto-fill, minmax(2rem, 1fr));
     gap: 1rem;
   }
+  .contact-data {
+    display: contents;
+  }
   .cart-items {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -105,6 +106,13 @@
     padding-bottom: 5rem;
     width: 100%;
   }
+  .empty-message {
+    text-align: center;
+    grid-column: 1 / -1;
+    align-self: center;
+    color: #888;
+    font-style: italic;
+  }
   .form-group {
     display: flex;
   }
@@ -112,9 +120,10 @@
     min-width: 35%;
   }
   .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="number"],
-  .form-group textarea {
+	.form-group input[type="email"],
+	.form-group input[type="number"],
+	.form-group input[type="tel"], /* Se añade el tipo tel */
+	.form-group textarea {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -133,10 +142,12 @@
     backdrop-filter: blur(16px);
     position: absolute;
     bottom: 1rem;
-    z-index: 99;
+    z-index: 9999;
+    cursor: pointer;
   }
   .submit-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 </style>

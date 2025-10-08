@@ -1,7 +1,11 @@
 <script>
-  import { removeFromTicket } from "$lib/stores";
+  import { removeFromTicket, ticket } from "$lib/stores";
 
   let { product } = $props();
+  
+  // Usar $derived para crear un valor reactivo derivado
+  let obs = $derived($ticket.find(item => item.id === product.id));
+  
   function removeItemFromTicket(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -19,8 +23,9 @@
   <div class="product-detail">
     <div class="form-group">
       <textarea
-      id="obs-{product.id}"
-      placeholder="Notas o requerimientos especiales para este producto."
+        id="obs-{product.id}"
+        placeholder="Notas o requerimientos especiales para este producto."
+        bind:value={obs}
       ></textarea>
     </div>
   </div>
