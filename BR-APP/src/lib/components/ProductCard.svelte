@@ -33,7 +33,7 @@
 >
   <div class="img-container">
     <img
-      src="src/lib/assets/products_media/{product.img_list[0]}"
+      src="/products_media/{product.img_list[0]}"
       alt={product.img_list[0]}
     />
   </div>

@@ -15,7 +15,7 @@
 
 <div class="product-card">
   <div class="product-img">
-    <img src="src/lib/assets/products_media/{product.img_list[0]}" alt="{product.img_list[0]}" />
+    <img src="/products_media/{product.img_list[0]}" alt="{product.img_list[0]}" />
   </div>
   <h3 class="product-title">
     {product.title}

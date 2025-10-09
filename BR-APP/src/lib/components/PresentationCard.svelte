@@ -11,16 +11,16 @@
   <h1>Axel E. Barba Bautista</h1>
   <div class="links">
     <a href={socialLinks.instagram} class="link">
-      <img src="/src/lib/assets/instagram.png" alt="instagram" />
+      <img src="/instagram.png" alt="instagram" />
     </a>
     <a href={socialLinks.whatsapp} class="link">
-      <img src="/src/lib/assets/whatsapp.png" alt="whatsapp" />
+      <img src="/whatsapp.png" alt="whatsapp" />
     </a>
     <a href={socialLinks.email} class="link">
-      <img src="/src/lib/assets/email.svg" alt="Correo" />
+      <img src="/email.svg" alt="Correo" />
     </a>
     <a href={socialLinks.phone} class="link">
-      <img src="/src/lib/assets/phone.svg" alt="Telefono" />
+      <img src="/phone.svg" alt="Telefono" />
     </a>
   </div>
 </div>

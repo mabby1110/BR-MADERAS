@@ -1,9 +1,9 @@
 <div class="container">
   <a class="cart" href="#start">
-    <img src="src/lib/assets/line-md--file-search.svg" alt="cart-icon" />
+    <img src="/line-md--file-search.svg" alt="cart-icon" />
   </a>
   <a class="cart" href="#ticket">
-    <img src="src/lib/assets/mdi-light--cart.svg" alt="cart-icon" />
+    <img src="/mdi-light--cart.svg" alt="cart-icon" />
   </a>
 </div>
 

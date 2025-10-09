@@ -1,5 +1,4 @@
 <script lang="ts">
-  import favicon from "$lib/assets/favicon.svg";
   import AppActions from "../lib/components/AppActions.svelte";
   import "$lib/global.css";
   import TicketForm from "$lib/components/TicketForm.svelte";
@@ -8,11 +7,8 @@
   let { children } = $props();
 </script>
 
-<svelte:head>
-  <link rel="icon" href={favicon} />
-</svelte:head>
 <div class="bg-img">
-  <img src="src/lib/assets/logo-br-maderas.jfif" alt="bg-log" />
+  <img src="/logo-br-maderas.jfif" alt="bg-log" />
 </div>
 <AppActions />
 <div class="layout-content">

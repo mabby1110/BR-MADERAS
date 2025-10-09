@@ -24,16 +24,16 @@
         rel="noopener noreferrer"
         aria-label="Instagram"
       >
-        <img src="/src/lib/assets/instagram.png" alt="instagram" />
+        <img src="/instagram.png" alt="instagram" />
       </a>
       <a href={socialLinks.whatsapp} class="link">
-        <img src="/src/lib/assets/whatsapp.png" alt="whatsapp" />
+        <img src="/whatsapp.png" alt="whatsapp" />
       </a>
       <a href={`mailto:${developerEmail}`} aria-label="Correo Electrónico">
-        <img src="/src/lib/assets/email.svg" alt="Correo" />
+        <img src="/email.svg" alt="Correo" />
       </a>
       <a href={socialLinks.phone} aria-label="Teléfono">
-        <img src="/src/lib/assets/phone.svg" alt="Telefono" />
+        <img src="/phone.svg" alt="Telefono" />
       </a>
     </div>
 
