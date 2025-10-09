@@ -1,4 +1,4 @@
-import { RESEND_API_KEY } from "$env/static/private";
+// import { RESEND_API_KEY } from "$env/static/private";
 import { json } from "@sveltejs/kit";
 import { Resend } from "resend";
 
@@ -7,7 +7,7 @@ import { Resend } from "resend";
 
 // Obtiene la clave del entorno para la verificación explícita dentro del handler.
 // const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const resend = new Resend(RESEND_API_KEY);
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 export async function POST({ request, params }) {
   console.log("send email api");
