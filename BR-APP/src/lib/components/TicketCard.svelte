@@ -4,7 +4,7 @@
   let { product } = $props();
   
   // Usar $derived para crear un valor reactivo derivado
-  let obs = $derived($ticket.find(item => item.id === product.id));
+  let obs = $derived(JSON.stringify($ticket.find(item => item.id === product.id)));
   
   function removeItemFromTicket(e) {
     e.preventDefault();
@@ -25,7 +25,6 @@
       <textarea
         id="obs-{product.id}"
         placeholder="Notas o requerimientos especiales para este producto."
-        bind:value={obs}
       ></textarea>
     </div>
   </div>
