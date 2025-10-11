@@ -1,6 +1,6 @@
 <script>
   import { removeFromTicket, ticket } from "$lib/stores";
-  import { scale } from "svelte/transition";
+  import { slide } from "svelte/transition";
 
   let { product } = $props();
   let expand = $state(true);
@@ -13,21 +13,27 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="product-card" class:expand onclick={() => (expand = !expand)}>
+<div
+  class="product-card"
+  class:expand
+  onclick={(e) => {
+    e.stopPropagation();
+    expand = !expand;
+  }}
+>
   <div class="product-detail">
     <h3 class="product-title">
       {product.title}
     </h3>
     {#if !expand}
-      <div class="form-group">
-        <textarea
-          id="obs-{product.id}"
-          placeholder="Notas o requerimientos especiales para este producto."
-          transition:scale
-        ></textarea>
-      </div>
+      <textarea
+        id="obs-{product.id}"
+        placeholder="Notas o requerimientos especiales para este producto."
+        in:slide
+        onclick={(e) => e.stopPropagation()}
+      ></textarea>
     {:else}
-      <p class="comment">presiona para agregar una nota</p>
+      <p class="comment" in:slide>presiona para agregar una nota</p>
     {/if}
   </div>
   <div class="product-img">
@@ -68,17 +74,18 @@
   .product-detail {
     flex-grow: 1;
     padding: 0 8px 8px;
-  }
-  .form-group {
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
   }
 
-  .form-group textarea {
+  textarea {
     width: 100%;
+    height: 100%;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 16px;
     resize: none;
+    flex-grow: 1;
   }
   .close-button {
     all: unset;

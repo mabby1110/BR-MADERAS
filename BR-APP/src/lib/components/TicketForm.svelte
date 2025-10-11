@@ -3,34 +3,36 @@
   import type { SubmitFunction } from "@sveltejs/kit";
   import TicketCard from "./TicketCard.svelte";
   import { ticket } from "$lib/stores";
+  import { fade } from "svelte/transition";
 
-  interface Producto {
-    id: string;
-    nombre: string;
-    cantidad: number;
-    [key: string]: any;
-  }
-
+  $: showSuccess = false;
   $: isTicketEmpty = $ticket.length === 0;
-
   $: ticketData = JSON.stringify($ticket);
 
   const handleSubmit: SubmitFunction = ({ form }) => {
-    alert("click?");
-    const formData = new FormData(form);
-
     return async ({ update }) => {
       await update({ reset: false, invalidateAll: true });
+      showSuccess = true;
+      ticket.set([]);
+      form.reset();
+      setTimeout(() => {
+        showSuccess = false;
+      }, 3000);
     };
   };
 </script>
 
 <div class="contact-form glass-by-mabby">
   <form method="POST" action="/api" use:enhance={handleSubmit}>
-    <input type="text" name="ticketData" id="ticket-data" hidden bind:value={ticketData}>
+    <input
+      type="text"
+      name="ticketData"
+      id="ticket-data"
+      hidden
+      bind:value={ticketData}
+    />
     <div class="contact-data">
       <h2 class="form-title">Solicitar Cotización</h2>
-
       <div class="form-group">
         <label for="nombreCliente">Nombre:</label>
         <input type="text" id="nombreCliente" name="nombreCliente" required />
@@ -39,7 +41,6 @@
         <label for="emailCliente">Email de Contacto:</label>
         <input type="email" id="emailCliente" name="emailCliente" required />
       </div>
-      <!-- Nuevo campo de teléfono -->
       <div class="form-group">
         <label for="telefonoCliente">Teléfono:</label>
         <input
@@ -50,7 +51,6 @@
         />
       </div>
     </div>
-
     <div class="cart-items">
       {#if $ticket.length > 0}
         {#each $ticket as product}
@@ -62,10 +62,15 @@
         </p>
       {/if}
     </div>
-
-    <button type="submit" class="submit-button" disabled={isTicketEmpty}>
-      Generar Cotización
-    </button>
+    {#if showSuccess}
+      <div class="success" transition:fade={{ duration: 300 }}>
+        ✅ Solicitud enviada
+      </div>
+    {:else}
+      <button type="submit" class="submit-button" disabled={isTicketEmpty}>
+        Generar Cotización
+      </button>
+    {/if}
   </form>
 </div>
 
@@ -85,7 +90,7 @@
     max-width: 600px;
     width: 100%;
     align-self: center;
-    padding: 0 0;
+    padding: 0;
     overflow-y: hidden;
   }
   .contact-form form {
@@ -96,11 +101,10 @@
   .contact-data {
     height: 18vh;
     display: contents;
-    background-color: #888;
   }
   .cart-items {
     height: 28vh;
-    overflow: scroll;
+    overflow-y: auto;
   }
   .empty-message {
     text-align: center;
@@ -115,18 +119,13 @@
   .form-group label {
     min-width: 35%;
   }
-  .form-group input[type="text"],
-	.form-group input[type="email"],
-	.form-group input[type="number"],
-	.form-group input[type="tel"], /* Se añade el tipo tel */
-	.form-group textarea {
+  .form-group input {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-
   .submit-button {
     all: unset;
     padding: 1rem;
@@ -138,12 +137,24 @@
     backdrop-filter: blur(16px);
     position: absolute;
     bottom: 1rem;
-    z-index: 9999;
     cursor: pointer;
   }
   .submit-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
     opacity: 0.6;
+  }
+  .success {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4caf50;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 10;
   }
 </style>
