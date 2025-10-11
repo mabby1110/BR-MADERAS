@@ -1,11 +1,9 @@
 <script>
   import { removeFromTicket, ticket } from "$lib/stores";
+  import { scale } from "svelte/transition";
 
   let { product } = $props();
-  
-  // Usar $derived para crear un valor reactivo derivado
-  let obs = $derived(JSON.stringify($ticket.find(item => item.id === product.id)));
-  
+  let expand = $state(true);
   function removeItemFromTicket(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -13,20 +11,30 @@
   }
 </script>
 
-<div class="product-card">
-  <div class="product-img">
-    <img src="/products_media/{product.img_list[0]}" alt="{product.img_list[0]}" />
-  </div>
-  <h3 class="product-title">
-    {product.title}
-  </h3>
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div class="product-card" class:expand onclick={() => (expand = !expand)}>
   <div class="product-detail">
-    <div class="form-group">
-      <textarea
-        id="obs-{product.id}"
-        placeholder="Notas o requerimientos especiales para este producto."
-      ></textarea>
-    </div>
+    <h3 class="product-title">
+      {product.title}
+    </h3>
+    {#if !expand}
+      <div class="form-group">
+        <textarea
+          id="obs-{product.id}"
+          placeholder="Notas o requerimientos especiales para este producto."
+          transition:scale
+        ></textarea>
+      </div>
+    {:else}
+      <p class="comment">presiona para agregar una nota</p>
+    {/if}
+  </div>
+  <div class="product-img">
+    <img
+      src="/products_media/{product.img_list[0]}"
+      alt={product.img_list[0]}
+    />
   </div>
   <button class="close-button" onclick={removeItemFromTicket}>x</button>
 </div>
@@ -36,40 +44,37 @@
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    display: flex;
+    height: 10rem;
+    border: 1px var(--border-color) solid;
+    margin-bottom: 8px;
+  }
+  .product-card {
+    transition: height 0.3s ease;
   }
   .product-img {
-    grid-column: 2 / 3;
-    grid-row: 1 / 5;
+    width: 30%;
   }
   .product-title {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
     z-index: 1;
-    padding: 1rem 0;
+    padding: 8px 0;
   }
   .product-img img {
-    width: 30%;
+    width: 100%;
     height: 100%;
-    position: absolute;
     z-index: 0;
     object-fit: cover;
   }
   .product-detail {
-    grid-column: 1 / 2;
-    grid-row: 2 / 5;
+    flex-grow: 1;
+    padding: 0 8px 8px;
   }
   .form-group {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    overflow: hidden;
+    flex-grow: 1;
   }
 
   .form-group textarea {
-    width: 90%;
+    width: 100%;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 16px;
@@ -78,14 +83,25 @@
   .close-button {
     all: unset;
     position: absolute;
-    right: 0.6rem;
-    top: 0.2rem;
+    right: 0;
+    top: 0;
     z-index: 99;
-    padding: 1rem;
+    width: 1rem;
+    text-align: center;
+    padding: 4px 8px;
     color: black;
     font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.6);
+    border-radius: 0 0 0 8px;
   }
   .close-button:hover {
     color: black;
+  }
+  .product-card.expand {
+    height: 4rem;
+  }
+  .comment {
+    font-size: smaller;
+    color: var(--text-muted);
   }
 </style>

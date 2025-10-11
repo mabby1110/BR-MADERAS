@@ -4,7 +4,6 @@
     isProductInTicket,
     removeFromTicket,
   } from "$lib/stores";
-  import { preventDefault } from "svelte/legacy";
   import { slide } from "svelte/transition";
   let { product } = $props();
 
@@ -45,7 +44,7 @@
         Dimension base: {product.details.dimensionesCM}
       </p>
       <!-- svelte-ignore node_invalid_placement_ssr -->
-      <button class="expand" onclick={toggleDetails}>ver menos</button>
+      <button class="expand" onclick={toggleDetails}>ver menos</button> 
     </div>
   {:else}
     <!-- svelte-ignore node_invalid_placement_ssr -->

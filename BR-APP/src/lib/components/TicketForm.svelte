@@ -85,26 +85,22 @@
     max-width: 600px;
     width: 100%;
     align-self: center;
-    padding: 1rem 0;
-    overflow: hidden;
+    padding: 0 0;
+    overflow-y: hidden;
   }
   .contact-form form {
     display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(2rem, 1fr));
-    gap: 1rem;
+    grid-template-rows: 1fr auto;
+    gap: 8px;
   }
   .contact-data {
+    height: 18vh;
     display: contents;
+    background-color: #888;
   }
   .cart-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-auto-rows: 10rem;
-    gap: 1rem;
-    height: 40vh;
-    overflow-y: scroll;
-    padding-bottom: 5rem;
-    width: 100%;
+    height: 28vh;
+    overflow: scroll;
   }
   .empty-message {
     text-align: center;
