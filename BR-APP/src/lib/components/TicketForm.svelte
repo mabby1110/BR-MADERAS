@@ -78,7 +78,7 @@
   }
   .contact-form {
     position: sticky;
-    top: 1rem;
+    top: 0;
     border-radius: 16px;
     height: 60vh;
     max-width: 600px;

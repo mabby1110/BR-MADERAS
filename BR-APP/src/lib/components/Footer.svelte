@@ -38,11 +38,8 @@
     </div>
 
     <div class="copyright">
-      <br />
-      <br />
       Diseño y Desarrollado de<br /> <strong>{developerName}</strong>.
       <a href={socialLinks.github} aria-label="GitHub"> [GitHub] </a>
-      <br />
     </div>
   </div>
 </footer>
@@ -86,13 +83,7 @@
     transition: color 0.3s; /* Efecto hover sutil */
     cursor: pointer;
   }
-
-  .social-links a:hover {
-    color: #555; /* Color ligeramente gris al pasar el mouse */
-  }
-
   .copyright {
-    font-size: 0.9em; /* Letras un poco más pequeñas para el copyright */
-    line-height: 1.5;
+    font-size: smaller; /* Letras un poco más pequeñas para el copyright */
   }
 </style>

@@ -8,7 +8,7 @@
 </script>
 
 <div class="container glass-by-mabby">
-  <h1>Axel E. Barba Bautista</h1>
+  <p>por Axel E. Barba Bautista</p>
   <div class="links">
     <a href={socialLinks.instagram} class="link">
       <img src="/instagram.png" alt="instagram" />
@@ -30,21 +30,21 @@
     align-self: center;
     justify-self: center;
     padding: 1rem;
-    max-width: 600px;
+    max-width: fit-content;
     width: 100%;
     border-radius: 16px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
+    justify-content: space-evenly;
     text-align: center;
     flex-direction: column;
     gap: 1rem;
     white-space: pre;
-    height: 8rem;
+    height: 6rem;
   }
 
   .links {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: space-evenly;
   }
 </style>

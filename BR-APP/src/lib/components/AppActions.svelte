@@ -10,7 +10,7 @@
 <style>
   .container {
     position: fixed;
-    z-index: 999;
+    z-index: 9999;
     right: 8px;
     bottom: 1rem;
     display: flex;

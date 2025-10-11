@@ -41,11 +41,11 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 75vh;
     margin-bottom: 4rem;
     padding: 0 8px 2rem;
     position: sticky;
-    top: 9rem;
+    top: 8rem;
   }
   .bg-img {
     position: fixed;
