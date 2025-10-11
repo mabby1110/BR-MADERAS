@@ -32,7 +32,7 @@ export async function POST({ request, params }) {
       <tr>
         <td style="border: 1px solid #ccc; padding: 8px;">${p.id}</td>
         <td style="border: 1px solid #ccc; padding: 8px;">${p.title}</td>
-        <td style="border: 1px solid #ccc; padding: 8px;">${p.details}</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">${p.obs}</td>
       </tr>
     `
           )
@@ -57,7 +57,7 @@ export async function POST({ request, params }) {
             <tr style="background-color: #f2f2f2;">
               <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">ID</th>
               <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Producto</th>
-              <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Cantidad</th>
+              <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Notas</th>
             </tr>
           </thead>
           <tbody>

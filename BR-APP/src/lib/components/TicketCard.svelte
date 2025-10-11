@@ -1,9 +1,15 @@
-<script>
+<script lang="ts">
   import { removeFromTicket, ticket } from "$lib/stores";
   import { slide } from "svelte/transition";
 
-  let { product } = $props();
-  let expand = $state(true);
+  export let product;
+  $: expand = true;
+  $: obs = "";
+  $: {
+    $ticket.find((item) => item.id == product.id).obs = obs;
+    console.log("obs", obs);
+  }
+
   function removeItemFromTicket(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -27,10 +33,11 @@
     </h3>
     {#if !expand}
       <textarea
-        id="obs-{product.id}"
+        id="obs"
         placeholder="Notas o requerimientos especiales para este producto."
         in:slide
         onclick={(e) => e.stopPropagation()}
+        bind:value={obs}
       ></textarea>
     {:else}
       <p class="comment" in:slide>presiona para agregar una nota</p>

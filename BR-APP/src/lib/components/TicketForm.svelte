@@ -5,55 +5,50 @@
   import { ticket } from "$lib/stores";
   import { fade } from "svelte/transition";
 
-  $: showSuccess = false;
-  $: isTicketEmpty = $ticket.length === 0;
-  $: ticketData = JSON.stringify($ticket);
+  let showSuccess = false;
 
-  const handleSubmit: SubmitFunction = ({ form }) => {
+  $: isTicketEmpty = $ticket.length === 0;
+  $: ticketData = '';
+  $: {ticketData = $ticket}
+
+  const handleSubmit: SubmitFunction = (event) => {
+    console.log(ticketData);
+    event.formData.append('ticketData', JSON.stringify(ticketData));
     return async ({ update }) => {
-      await update({ reset: false, invalidateAll: true });
+      await update({ reset: true, invalidateAll: true });
       showSuccess = true;
+      event.formElement.reset();
+      ticketData = ''
       ticket.set([]);
-      form.reset();
       setTimeout(() => {
         showSuccess = false;
       }, 3000);
     };
   };
+
 </script>
 
 <div class="contact-form glass-by-mabby">
   <form method="POST" action="/api" use:enhance={handleSubmit}>
-    <input
-      type="text"
-      name="ticketData"
-      id="ticket-data"
-      hidden
-      bind:value={ticketData}
-    />
+
     <div class="contact-data">
       <h2 class="form-title">Solicitar Cotización</h2>
       <div class="form-group">
         <label for="nombreCliente">Nombre:</label>
-        <input type="text" id="nombreCliente" name="nombreCliente" required />
+        <input type="text" id="nombreCliente" name="nombreCliente" />
       </div>
       <div class="form-group">
         <label for="emailCliente">Email de Contacto:</label>
-        <input type="email" id="emailCliente" name="emailCliente" required />
+        <input type="email" id="emailCliente" name="emailCliente" />
       </div>
       <div class="form-group">
         <label for="telefonoCliente">Teléfono:</label>
-        <input
-          type="tel"
-          id="telefonoCliente"
-          name="telefonoCliente"
-          required
-        />
+        <input type="tel" id="telefonoCliente" name="telefonoCliente" />
       </div>
     </div>
     <div class="cart-items">
       {#if $ticket.length > 0}
-        {#each $ticket as product}
+        {#each $ticket as product (product.id)}
           <TicketCard {product} />
         {/each}
       {:else}
@@ -66,11 +61,10 @@
       <div class="success" transition:fade={{ duration: 300 }}>
         ✅ Solicitud enviada
       </div>
-    {:else}
-      <button type="submit" class="submit-button" disabled={isTicketEmpty}>
-        Generar Cotización
-      </button>
     {/if}
+    <button type="submit" class="submit-button" disabled={isTicketEmpty}>
+      Generar Cotización
+    </button>
   </form>
 </div>
 
